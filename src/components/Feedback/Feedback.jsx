@@ -7,23 +7,19 @@ state = {
         bad: 0
       }
 
-onButtonGood = () => {
-    this.setState((prevState) => ({
+addFeedback = (e) => {
+    if (e.target.hasAttribute('data-good')){
+        this.setState((prevState) => ({
         good: prevState.good + 1,   
-    }));
+    }))}else if(e.target.hasAttribute('data-bad')){
+        this.setState((prevState) => ({
+        bad: prevState.bad + 1,   
+    }))}else if(e.target.hasAttribute('data-neutral')){
+        this.setState((prevState) => ({
+        neutral: prevState.neutral + 1,   
+    }))}
 };
 
-onButtonNeutral = () => {
-    this.setState((prevState) => ({
-        neutral: prevState.neutral + 1,
-    }));
-};
-
-onButtonBad = () => {
-    this.setState((prevState) => ({  
-        bad: prevState.bad + 1, 
-    }));
-};
 
 countTotalFeedback = () => {  
     const {good, neutral, bad} = this.state;
@@ -39,9 +35,9 @@ render(){
     return(
         <div>
             <h1>Please leave feedback</h1>
-            <button type="button" onClick={this.onButtonGood}>Good</button>
-            <button type="button" onClick={this.onButtonNeutral}>Neutral</button>
-            <button type="button" onClick={this.onButtonBad}>Bad</button>
+            <button type="button" onClick={this.addFeedback} data-good>Good</button>
+            <button type="button" onClick={this.addFeedback} data-neutral>Neutral</button>
+            <button type="button" onClick={this.addFeedback} data-bad>Bad</button>
             <p>Statistics</p>
             <ul>
                 <li>Good: {this.state.good}</li>
