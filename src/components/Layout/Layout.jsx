@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import Wrapper from './Layout.styled';
 
 const Layout = ({ children }) => {
     return (
-      <div>
+      <Wrapper>
         <main>{children}</main>
-      </div>
+      </Wrapper>
     );
   };
 

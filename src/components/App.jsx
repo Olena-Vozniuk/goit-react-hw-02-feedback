@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import GlobalStyle from './GlobalStyle';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Layout from "./Layout/Layout";
 import Section from './Section/Section';
@@ -46,9 +47,10 @@ render(){
             bad={bad}
             total={this.countTotalFeedback()}
             positivePercentage={this.countPositiveFeedbackPercentage()}
-          ></Statistics>) : (<Notification message="There is no feedback"></Notification>)
+          />) : (<Notification message="There is no feedback"></Notification>)
           }
-    </Section>
+        </Section>
+        <GlobalStyle />
       </Layout>
     )
   };
